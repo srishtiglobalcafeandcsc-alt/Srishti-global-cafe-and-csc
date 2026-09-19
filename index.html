@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Srishti Global Cafe & CSC</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, "Noto Sans Devanagari", sans-serif;
+}
+
+body{
+    background:#f5f7ff;
+    color:#222;
+}
+
+/* TOP BAR */
+.top{
+    background:linear-gradient(90deg,#7c3aed,#2563eb,#06b6d4);
+    color:white;
+    text-align:center;
+    padding:8px;
+    font-size:14px;
+}
+
+/* HEADER */
+header{
+    background:white;
+    padding:15px 5%;
+    box-shadow:0 3px 15px #0002;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:bold;
+    color:#4f46e5;
+}
+
+.logo span{
+    color:#f97316;
+}
+
+nav a{
+    text-decoration:none;
+    color:#333;
+    font-weight:bold;
+    margin-left:15px;
+}
+
+nav a:hover{
+    color:#7c3aed;
+}
+
+/* HERO */
+.hero{
+    padding:45px 5% 55px;
+    text-align:center;
+    background:
+    linear-gradient(135deg,#ede9fe,#dbeafe,#cffafe,#fef3c7);
+}
+
+.hero h1{
+    font-size:38px;
+    color:#312e81;
+    margin-bottom:10px;
+}
+
+.hero p{
+    color:#475569;
+    font-size:17px;
+    margin-bottom:25px;
+}
+
+/* SEARCH */
+.search-box{
+    max-width:700px;
+    margin:auto;
+    position:relative;
+}
+
+.search-box input{
+    width:100%;
+    padding:17px 55px 17px 20px;
+    border:3px solid #8b5cf6;
+    border-radius:40px;
+    font-size:17px;
+    outline:none;
+    background:white;
+    box-shadow:0 5px 20px #0002;
+}
+
+.search-icon{
+    position:absolute;
+    right:20px;
+    top:13px;
+    font-size:25px;
+}
+
+/* SECTION */
+section{
+    padding:45px 5%;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:28px;
+}
+
+.title h2{
+    color:#312e81;
+    font-size:29px;
+}
+
+.title p{
+    color:#64748b;
+    margin-top:7px;
+}
+
+/* CATEGORY GRID */
+.categories{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:18px;
+}
+
+.category{
+    padding:25px 15px;
+    border-radius:18px;
+    color:white;
+    text-align:center;
+    cursor:pointer;
+    box-shadow:0 7px 18px #0002;
+    transition:.25s;
+}
+
+.category:hover{
+    transform:translateY(-6px) scale(1.02);
+}
+
+.category .emoji{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.category h3{
+    font-size:19px;
+}
+
+.c1{background:linear-gradient(135deg,#7c3aed,#a855f7);}
+.c2{background:linear-gradient(135deg,#2563eb,#06b6d4);}
+.c3{background:linear-gradient(135deg,#059669,#10b981);}
+.c4{background:linear-gradient(135deg,#ea580c,#f59e0b);}
+.c5{background:linear-gradient(135deg,#dc2626,#f43f5e);}
+.c6{background:linear-gradient(135deg,#ca8a04,#eab308);}
+.c7{background:linear-gradient(135deg,#db2777,#ec4899);}
+.c8{background:linear-gradient(135deg,#4f46e5,#6366f1);}
+.c9{background:linear-gradient(135deg,#0891b2,#14b8a6);}
+.c10{background:linear-gradient(135deg,#9333ea,#ec4899);}
+
+/* SERVICES */
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:18px;
+}
+
+.service{
+    background:white;
+    padding:22px;
+    border-radius:16px;
+    box-shadow:0 5px 18px #00000012;
+    border-top:5px solid #7c3aed;
+    transition:.2s;
+}
+
+.service:hover{
+    transform:translateY(-4px);
+}
+
+.service h3{
+    color:#312e81;
+    margin-bottom:8px;
+}
+
+.service p{
+    color:#64748b;
+    line-height:1.5;
+}
+
+.service a{
+    display:inline-block;
+    margin-top:14px;
+    padding:9px 14px;
+    border-radius:8px;
+    background:#4f46e5;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* NOTIFICATIONS */
+.notice-area{
+    background:linear-gradient(135deg,#fff7ed,#fef2f2);
+}
+
+.notice{
+    background:white;
+    padding:17px;
+    margin:12px auto;
+    max-width:900px;
+    border-radius:12px;
+    border-left:6px solid #f97316;
+    box-shadow:0 3px 12px #0001;
+}
+
+.notice strong{
+    color:#c2410c;
+}
+
+/* SEARCH RESULT */
+#searchResult{
+    display:none;
+    max-width:900px;
+    margin:25px auto 0;
+}
+
+.result{
+    background:white;
+    padding:18px;
+    border-radius:12px;
+    margin:10px 0;
+    box-shadow:0 3px 12px #0002;
+}
+
+.result h3{
+    color:#4f46e5;
+}
+
+/* ADMIN */
+.admin{
+    background:#111827;
+    color:white;
+}
+
+.admin-box{
+    max-width:850px;
+    margin:auto;
+    background:#1f2937;
+    padding:25px;
+    border-radius:18px;
+}
+
+.admin-box input,
+.admin-box textarea{
+    width:100%;
+    padding:12px;
+    margin:8px 0 14px;
+    border:0;
+    border-radius:8px;
+}
+
+.btn{
+    border:0;
+    padding:11px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+    background:#8b5cf6;
+    color:white;
+}
+
+.btn:hover{
+    opacity:.85;
+}
+
+/* FOOTER */
+footer{
+    background:#020617;
+    color:white;
+    text-align:center;
+    padding:30px 15px;
+}
+
+footer h2{
+    color:#facc15;
+}
+
+.footer-links{
+    margin:15px 0;
+}
+
+.footer-links a{
+    color:#c4b5fd;
+    margin:5px 10px;
+    text-decoration:none;
+}
+
+/* MOBILE */
+@media(max-width:750px){
+
+    .header{
+        flex-direction:column;
+    }
+
+    nav{
+        text-align:center;
+    }
+
+    nav a{
+        display:inline-block;
+        margin:5px;
+        font-size:14px;
+    }
+
+    .hero h1{
+        font-size:29px;
+    }
+
+    .categories{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- TOP -->
+<div class="top">
+📢 Srishti Global Cafe & CSC — Online Services & Government Updates
+</div>
+
+
+<!-- HEADER -->
+<header>
+<div class="header">
+
+<div class="logo">
+Srishti <span>Global Cafe</span>
+</div>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#categories">Categories</a>
+<a href="#updates">Updates</a>
+<a href="#services">Services</a>
+<a href="#admin">Admin</a>
+</nav>
+
+</div>
+</header>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+<h1>🌐 Srishti Global Cafe & CSC</h1>
+
+<p>
+सरकारी सेवाएँ • Online Forms • Jobs • Results • Scholarship • Updates
+</p>
+
+<div class="search-box">
+
+<input
+type="text"
+id="search"
+placeholder="🔎 कोई भी Service खोजें..."
+onkeyup="searchService()">
+
+<div class="search-icon">🔍</div>
+
+</div>
+
+<div id="searchResult"></div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+<section id="categories">
+
+<div class="title">
+<h2>📂 All Categories</h2>
+<p>अपनी जरूरत के अनुसार Category चुनें</p>
+</div>
+
+<div class="categories">
+
+<div class="category c1" onclick="showCategory('RTPS')">
+<div class="emoji">🏛️</div>
+<h3>RTPS</h3>
+</div>
+
+<div class="category c2" onclick="showCategory('RRB')">
+<div class="emoji">🚆</div>
+<h3>RRB / Railway</h3>
+</div>
+
+<div class="category c3" onclick="showCategory('SSC')">
+<div class="emoji">📝</div>
+<h3>SSC</h3>
+</div>
+
+<div class="category c4" onclick="showCategory('Sarkari Update')">
+<div class="emoji">📢</div>
+<h3>Sarkari Update</h3>
+</div>
+
+<div class="category c5" onclick="showCategory('Sarkari Seva')">
+<div class="emoji">🏢</div>
+<h3>Sarkari Seva</h3>
+</div>
+
+<div class="category c6" onclick="showCategory('Scholarship')">
+<div class="emoji">🎓</div>
+<h3>Scholarship</h3>
+</div>
+
+<div class="category c7" onclick="showCategory('Latest Jobs')">
+<div class="emoji">💼</div>
+<h3>Latest Jobs</h3>
+</div>
+
+<div class="category c8" onclick="showCategory('Admit Card')">
+<div class="emoji">🎫</div>
+<h3>Admit Card</h3>
+</div>
+
+<div class="category c9" onclick="showCategory('Result')">
+<div class="emoji">📊</div>
+<h3>Result</h3>
+</div>
+
+<div class="category c10" onclick="showCategory('Yojana')">
+<div class="emoji">🇮🇳</div>
+<h3>Sarkari Yojana</h3>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SERVICES -->
+<section id="services">
+
+<div class="title">
+<h2>⭐ Popular Services</h2>
+<p>सबसे ज्यादा इस्तेमाल होने वाली सेवाएँ</p>
+</div>
+
+<div class="service-grid">
+
+<div class="service" data-name="जाति प्रमाण पत्र caste certificate RTPS">
+<h3>📜 जाति प्रमाण पत्र</h3>
+<p>RTPS के माध्यम से जाति प्रमाण पत्र की जानकारी और आवेदन।</p>
+<a href="https://serviceonline.bihar.gov.in/" target="_blank">
+Official Portal →
+</a>
+</div>
+
+<div class="service" data-name="आय प्रमाण पत्र income certificate RTPS">
+<h3>💰 आय प्रमाण पत्र</h3>
+<p>आय प्रमाण पत्र के लिए आधिकारिक पोर्टल।</p>
+<a href="https://serviceonline.bihar.gov.in/" target="_blank">
+Official Portal →
+</a>
+</div>
+
+<div class="service" data-name="निवास प्रमाण पत्र residence domicile RTPS">
+<h3>🏠 निवास प्रमाण पत्र</h3>
+<p>निवास प्रमाण पत्र की ऑनलाइन सेवा।</p>
+<a href="https://serviceonline.bihar.gov.in/" target="_blank">
+Official Portal →
+</a>
+</div>
+
+<div class="service" data-name="khatiyan land bhumi जमीन खतियान">
+<h3>🌾 जमीन / खतियान</h3>
+<p>बिहार भूमि और जमीन से संबंधित ऑनलाइन जानकारी।</p>
+<a href="https://biharbhumi.bihar.gov.in/" target="_blank">
+Official Portal →
+</a>
+</div>
+
+<div class="service" data-name="passport passport seva">
+<h3>🛂 Passport</h3>
+<p>Passport से संबंधित आधिकारिक सेवाएँ।</p>
+<a href="https://www.passportindia.gov.in/" target="_blank">
+Official Portal →
+</a>
+</div>
+
+<div class="service" data-name="railway rrb group d ntpc">
+<h3>🚆 RRB / Railway</h3>
+<p>Railway भर्ती, Group D, NTPC और अन्य updates।</p>
+<a href="https://www.rrbapply.gov.in/" target="_blank">
+Official Portal →
+</a>
+</div>
+
+<div class="service" data-name="ssc gd chsl cgl mts">
+<h3>📝 SSC</h3>
+<p>SSC GD, CHSL, CGL, MTS और अन्य भर्ती।</p>
+<a href="https://ssc.gov.in/" target="_blank">
+Official Portal →
+</a>
+</div>
+
+<div class="service" data-name="scholarship scholarship bihar nsp">
+<h3>🎓 Scholarship</h3>
+<p>Scholarship और छात्रवृत्ति से संबंधित जानकारी।</p>
+<a href="https://scholarships.gov.in/" target="_blank">
+Official Portal →
+</a>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- UPDATES -->
+<section class="notice-area" id="updates">
+
+<div class="title">
+<h2>🔔 Sarkari Latest Updates</h2>
+<p>नई notification और महत्वपूर्ण जानकारी</p>
+</div>
+
+<div id="noticeList">
+
+<div class="notice">
+<strong>🚆 Railway Update</strong>
+<p>Railway की नई notification आने पर यहाँ update जोड़ा जा सकता है।</p>
+</div>
+
+<div class="notice">
+<strong>📝 SSC Update</strong>
+<p>SSC की नई भर्ती / admit card / result की जानकारी यहाँ दिखाई जाएगी।</p>
+</div>
+
+<div class="notice">
+<strong>🎓 Scholarship Update</strong>
+<p>नई scholarship information यहाँ दिखाई जाएगी।</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ADMIN -->
+<section class="admin" id="admin">
+
+<div class="title">
+<h2 style="color:white;">🔐 Admin Panel</h2>
+<p style="color:#cbd5e1;">
+Website updates manage करने का basic structure
+</p>
+</div>
+
+<div class="admin-box">
+
+<h3>Admin Login</h3>
+
+<input id="adminUser" placeholder="Username">
+
+<input
+id="adminPass"
+type="password"
+placeholder="Password">
+
+<button class="btn" onclick="adminLogin()">
+Login
+</button>
+
+<div id="adminArea" style="display:none;margin-top:25px;">
+
+<hr style="border-color:#475569;margin-bottom:20px">
+
+<h3>➕ नई Update जोड़ें</h3>
+
+<input id="newTitle" placeholder="Update Title">
+
+<textarea
+id="newText"
+rows="4"
+placeholder="Update Details"></textarea>
+
+<button class="btn" onclick="addUpdate()">
+Publish Update
+</button>
+
+<p id="adminMessage" style="margin-top:15px;"></p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+<h2>Srishti Global Cafe & CSC</h2>
+
+<p>Digital Services • Online Forms • Government Updates</p>
+
+<div class="footer-links">
+<a href="#home">Home</a>
+<a href="#services">Services</a>
+<a href="#updates">Updates</a>
+<a href="#categories">Categories</a>
+</div>
+
+<p style="color:#94a3b8;font-size:13px;">
+© 2026 Srishti Global Cafe & CSC
+</p>
+
+</footer>
+
+
+<script>
+
+/* SERVICE SEARCH */
+
+function searchService(){
+
+let input =
+document.getElementById("search")
+.value
+.toLowerCase()
+.trim();
+
+let result =
+document.getElementById("searchResult");
+
+let services =
+document.querySelectorAll(".service");
+
+if(input === ""){
+
+result.style.display="none";
+result.innerHTML="";
+return;
+
+}
+
+let found = 0;
+let html = "";
+
+services.forEach(function(service){
+
+let name =
+service.getAttribute("data-name")
+.toLowerCase();
+
+if(name.includes(input)){
+
+found++;
+
+html += `
+<div class="result">
+<h3>${service.querySelector("h3").innerText}</h3>
+<p>${service.querySelector("p").innerText}</p>
+${service.querySelector("a").outerHTML}
+</div>
+`;
+
+}
+
+});
+
+result.style.display="block";
+
+if(found === 0){
+
+result.innerHTML = `
+<div class="result">
+<h3>❌ Service नहीं मिली</h3>
+<p>दूसरा नाम या keyword डालकर search करें।</p>
+</div>
+`;
+
+}else{
+
+result.innerHTML =
+`<p style="margin-bottom:10px;">
+🔎 ${found} service मिली:
+</p>` + html;
+
+}
+
+}
+
+
+/* CATEGORY */
+
+function showCategory(category){
+
+document.getElementById("search").value = category;
+
+searchService();
+
+window.scrollTo({
+top:document.querySelector(".hero").offsetTop,
+behavior:"smooth"
+});
+
+}
+
+
+/* ADMIN LOGIN - DEMO */
+
+function adminLogin(){
+
+let user =
+document.getElementById("adminUser").value;
+
+let pass =
+document.getElementById("adminPass").value;
+
+if(user === "admin" && pass === "1234"){
+
+document.getElementById("adminArea")
+.style.display="block";
+
+alert("✅ Admin Login Successful");
+
+}else{
+
+alert("❌ Username या Password गलत है");
+
+}
+
+}
+
+
+/* ADD UPDATE */
+
+function addUpdate(){
+
+let title =
+document.getElementById("newTitle").value;
+
+let text =
+document.getElementById("newText").value;
+
+if(title === "" || text === ""){
+
+alert("Title और Details भरें");
+
+return;
+
+}
+
+let box =
+document.createElement("div");
+
+box.className="notice";
+
+box.innerHTML =
+"<strong>📢 "+title+"</strong><p>"
++text+
+"</p>";
+
+document.getElementById("noticeList")
+.prepend(box);
+
+document.getElementById("newTitle").value="";
+document.getElementById("newText").value="";
+
+document.getElementById("adminMessage")
+.innerHTML="✅ Update publish हो गया।";
+
+}
+
+</script>
+
+</body>
+</html>
